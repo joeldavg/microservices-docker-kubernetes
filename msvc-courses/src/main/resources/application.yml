@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: msvc-courses
+  datasource:
+    url: jdbc:postgresql://localhost:5432/msvc_courses
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    generate-ddl: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+server:
+  port: 8002
+
+logging:
+  level:
+    org.hibernate.sql: debug

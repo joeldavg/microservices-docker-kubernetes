@@ -2,9 +2,9 @@ spring:
   application:
     name: msvc-users
   datasource:
-    url: jdbc:mysql://mysql8:3306/msvc_users?allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: sasa
+    url: jdbc:mysql://${DB_HOST:mysql8:3306}/${DB_DATABASE:msvc_users}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:sasa}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -13,7 +13,7 @@ spring:
     generate-ddl: true
 
 server:
-  port: 8001
+  port: ${PORT:8001}
 
 logging:
   level:
@@ -22,3 +22,7 @@ logging:
         SQL: debug
   file:
     path: /app/logs
+
+msvc:
+  courses:
+    url: ${COURSES_URL:msvc-courses:8002/api/v1/courses}

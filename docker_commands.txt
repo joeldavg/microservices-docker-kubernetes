@@ -1,0 +1,8 @@
+***DOCKER**
+docker run -p 8001:8001 --env-file .\msvc-usuarios\.env -d --rm --name msvc-users --network spring users
+
+docker build -t courses . -f .\msvc-courses\Dockerfile
+
+docker run -d -p 5433:5432 --name postgres14 --network spring -e POSTGRES_PASSWORD=sasa -e POSTGRES_DB=msvc_courses -v data-postgres:/var/lib/postgresql/data --restart=always postgres:14-alpine
+
+docker run -d -p 3307:3306 --name mysql8 --network spring -e MYSQL_ROOT_PASSWORD=sasa -e MYSQL_DATABASE=msvc_users -v data-mysql:/var/lib/mysql --restart=always mysql:8

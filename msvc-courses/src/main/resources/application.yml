@@ -2,9 +2,9 @@ spring:
   application:
     name: msvc-courses
   datasource:
-    url: jdbc:postgresql://postgres14:5432/msvc_courses
-    username: postgres
-    password: sasa
+    url: jdbc:postgresql://${DB_HOST:postgres14:5432}/${DB_DATABASE:msvc_courses}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:sasa}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
@@ -16,10 +16,16 @@ spring:
             non_contextual_creation: true
 
 server:
-  port: 8002
+  port: ${PORT:8002}
 
 logging:
   level:
     org:
       hibernate:
         SQL: debug
+  file:
+    path: /app/logs
+
+msvc:
+  users:
+    url: ${USERS_URL:msvc-users:8001/api/v1/users}

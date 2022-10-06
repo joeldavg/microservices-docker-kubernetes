@@ -11,5 +11,15 @@ Zmsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/models/entit
 Qmsvc-courses/src/main/java/com/joeldavg/springcloud/msvc/courses/models/User.java,e\d\ed51a7e03e81bd28e0392c52c769a0f19a46400e
 ‘
 amsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/repository/UserRepository.java,b\a\ba8add197d7b2fc9b4459efdac6beeedb3ed2d99
+E
+msvc-usuarios/pom.xml,3\5\35db51b5be2bab04530d7f81843e70f086e9aaf0
+‘
+amsvc-courses/src/main/java/com/joeldavg/springcloud/msvc/courses/controller/CourseController.java,1\6\16d2220adb4d989cab395f9e425ecfadc86fc167
+‘
+amsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/controller/UserController.java,5\b\5b23614e5c0e38cbd5d96f37f4c6a1781ca9b0dd
 ‹
 [msvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/service/UserService.java,0\0\008f9d2e1931b5eecd8ede00073ee2c0489a2f70
+”
+dmsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/service/impl/UserServiceImpl.java,8\d\8d577061b66ca0bf91f57e75bdb70f0c390a9359
+?
+logs/spring.log,7\6\76a20666cd8f97e7a29654b5cc02219795841972

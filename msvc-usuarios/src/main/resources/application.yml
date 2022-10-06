@@ -2,9 +2,9 @@ spring:
   application:
     name: msvc-users
   datasource:
-    url: jdbc:mysql://host.docker.internal:3306/msvc_users?useSSL=false&serverTimezone=America/Bogota&useLegacyDatetimeCode=false
+    url: jdbc:mysql://mysql8:3306/msvc_users?allowPublicKeyRetrieval=true&useSSL=false
     username: root
-    password:
+    password: sasa
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -19,4 +19,6 @@ logging:
   level:
     org:
       hibernate:
-        sql: debug
+        SQL: debug
+  file:
+    path: /app/logs

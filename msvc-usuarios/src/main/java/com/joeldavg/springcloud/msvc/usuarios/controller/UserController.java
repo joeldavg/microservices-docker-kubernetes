@@ -19,8 +19,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        return ResponseEntity.ok(userService.findAll());
+    public ResponseEntity<Map<String, List<User>>> findAll() {
+        return ResponseEntity.ok(Collections.singletonMap("user", userService.findAll()));
     }
 
     @GetMapping("{id}")

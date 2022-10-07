@@ -23,3 +23,11 @@ amsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/controller/U
 dmsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/service/impl/UserServiceImpl.java,8\d\8d577061b66ca0bf91f57e75bdb70f0c390a9359
 ?
 logs/spring.log,7\6\76a20666cd8f97e7a29654b5cc02219795841972
+ê
+`msvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/clients/CourseClientRest.java,9\e\9e5410b27f265845e812e6bc599bbe147dbcf774
+å
+\msvc-courses/src/main/java/com/joeldavg/springcloud/msvc/courses/clients/UserClientRest.java,2\f\2f896a8dc54251a7d4401bb194f6e3d427b969d4
+C
+docker_commands.txt,1\8\18bf784c281bbf0a2b74245821a542415ccaf35a
+B
+msvc-usuarios/.env,0\4\0469e942a4e8d7af4a5b9965c5e065884065c795

@@ -29,5 +29,3 @@ dmsvc-usuarios/src/main/java/com/joeldavg/springcloud/msvc/usuarios/service/impl
 \msvc-courses/src/main/java/com/joeldavg/springcloud/msvc/courses/clients/UserClientRest.java,2\f\2f896a8dc54251a7d4401bb194f6e3d427b969d4
 C
 docker_commands.txt,1\8\18bf784c281bbf0a2b74245821a542415ccaf35a
-B
-msvc-usuarios/.env,0\4\0469e942a4e8d7af4a5b9965c5e065884065c795

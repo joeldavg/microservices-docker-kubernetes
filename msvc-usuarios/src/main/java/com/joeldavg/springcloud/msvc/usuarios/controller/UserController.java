@@ -3,6 +3,8 @@ package com.joeldavg.springcloud.msvc.usuarios.controller;
 import com.joeldavg.springcloud.msvc.usuarios.models.entity.User;
 import com.joeldavg.springcloud.msvc.usuarios.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -18,9 +20,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @GetMapping("crash")
+    public void crash() {
+        ((ConfigurableApplicationContext )applicationContext).close();
+    }
+
     @GetMapping
-    public ResponseEntity<Map<String, List<User>>> findAll() {
-        return ResponseEntity.ok(Collections.singletonMap("user", userService.findAll()));
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(userService.findAll());
     }
 
     @GetMapping("{id}")

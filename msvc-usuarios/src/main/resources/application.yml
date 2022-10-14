@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: msvc-users
   datasource:
@@ -11,6 +13,12 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
     generate-ddl: true
+  cloud:
+    kubernetes:
+      secrets:
+        enable-api: true
+      discovery:
+        all-namespaces: true
 
 server:
   port: ${PORT:8001}
@@ -23,6 +31,23 @@ logging:
   file:
     path: /app/logs
 
-msvc:
-  courses:
-    url: ${COURSES_URL:msvc-courses:8002/api/v1/courses}
+#msvc:
+#  courses:
+#    url: ${COURSES_URL:msvc-courses:8002/api/v1/courses}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true

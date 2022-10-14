@@ -5,6 +5,7 @@ import com.joeldavg.springcloud.msvc.usuarios.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -23,14 +24,21 @@ public class UserController {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private Environment environment;
+
     @GetMapping("crash")
     public void crash() {
         ((ConfigurableApplicationContext )applicationContext).close();
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        return ResponseEntity.ok(userService.findAll());
+    public ResponseEntity findAll() {
+        Map<String, Object> body = new HashMap<>();
+        body.put("users", userService.findAll());
+        body.put("pod_info", environment.getProperty("MY_POD_NAME") + ": " + environment.getProperty("MY_POD_IP"));
+        body.put("text", environment.getProperty("config.text"));
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("{id}")

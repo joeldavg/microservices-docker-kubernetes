@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/msvc-usuarios/pom.xml" />
         <option value="$PROJECT_DIR$/msvc-courses/pom.xml" />
+        <option value="$PROJECT_DIR$/msvc-gateway/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: msvc-courses
+          uri: lb://msvc-courses
+          predicates:
+            - Path=/api/courses/**
+          filters:
+            - StripPrefix=2
+        - id: msvc-users
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=2
+
+server:
+  port: 8090

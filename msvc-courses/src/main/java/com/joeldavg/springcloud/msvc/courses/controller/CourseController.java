@@ -14,7 +14,8 @@ import javax.validation.Valid;
 import java.util.*;
 
 @RestController
-@RequestMapping(value = "api/v1/courses")
+//@RequestMapping(value = "courses")
+//@RequestMapping(value = "api/v1/courses")
 public class CourseController {
 
     @Autowired

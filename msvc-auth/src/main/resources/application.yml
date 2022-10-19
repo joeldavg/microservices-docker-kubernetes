@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: msvc-auth
+
+
+server:
+  port: 9000

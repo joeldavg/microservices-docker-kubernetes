@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: pro
   application:
     name: msvc-users
   datasource:
@@ -19,6 +19,27 @@ spring:
         enable-api: true
       discovery:
         all-namespaces: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${LB_AUTH_ISSUER_URI:http://127.0.0.1:9000}
+      client:
+        registration:
+          msvc-users-client:
+            provider: spring
+            client-id: users-client
+            client-secret: 12345
+            authorization-grant-type: authorization_code
+            redirect-uri: ${LB_USERS_URI:http://127.0.0.1:8001}/authorized
+            scope:
+              - READ
+              - WRITE
+            client-name: msvc-users-client
+        provider:
+          spring:
+            issuer-uri: ${LB_AUTH_ISSUER_URI:http://127.0.0.1:9000}
+
 
 server:
   port: ${PORT:8001}

@@ -32,6 +32,12 @@ E
 D
 msvc-courses/pom.xml,4\9\4973bda155ac8601cb47bd306ab0b254f478d50d
 H
-docker-compose-users.yml,a\4\a4a55a88335f6d31bdc0d0ce8e03f9162dde633d
-H
 msvc-usuarios/Dockerfile,d\e\de40dde59f25d8bcce2561fd6e1df3af43f1c2ba
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+D
+msvc-gateway/pom.xml,1\2\1252d205d77cac907958911ed14179caca9f6900
+H
+docker-compose-users.yml,a\4\a4a55a88335f6d31bdc0d0ce8e03f9162dde633d
+8
+auth.yml,d\e\de453c987b8b464cd8ebe2e482b0467d12a76432

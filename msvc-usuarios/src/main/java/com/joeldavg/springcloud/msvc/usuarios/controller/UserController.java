@@ -113,6 +113,12 @@ public class UserController {
         return ResponseEntity.ok(userService.findAllById(ids));
     }
 
+    @GetMapping("authorized")
+    public Map<String, Object> authorized(@RequestParam String code) {
+        return Collections.singletonMap("code", code);
+    }
+
+
     private static ResponseEntity<Map<String, String>> validate(BindingResult result) {
         Map<String, String> errors = new HashMap<>();
         result.getFieldErrors().forEach(error -> {

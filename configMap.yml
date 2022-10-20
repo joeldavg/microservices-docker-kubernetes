@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: msvc-users
 data:
+  lb_auth_issuer_uri: http://127.0.0.1:53134
+  lb_users_uri: http://127.0.0.1:53125
   port: "8001"
   db_host: mysql8:3306
   db_name: msvc_users

@@ -3,14 +3,14 @@ kind: ConfigMap
 metadata:
   name: msvc-users
 data:
-  lb_auth_issuer_uri: http://127.0.0.1:53134
-  lb_users_uri: http://127.0.0.1:53125
+  lb_auth_issuer_uri: http://127.0.0.1:64309
+  lb_users_uri: http://127.0.0.1:64304
   port: "8001"
   db_host: mysql8:3306
   db_name: msvc_users
   #  db_username: root
   #  db_password: sasa
-  courses_url: msvc-courses:8002/api/v1/courses
+  courses_url: msvc-courses:8002
   application.yml: |-
     config:
       text: Configurando ambiente por defecto
@@ -40,4 +40,4 @@ data:
   db_name: msvc_courses
   #  db_username: postgres
   #  db_password: sasa
-  users_url: msvc-users:8001/api/v1/users
+  users_url: msvc-users:8001

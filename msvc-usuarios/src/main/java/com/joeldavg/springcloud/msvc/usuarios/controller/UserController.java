@@ -8,6 +8,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +30,15 @@ public class UserController {
     @Autowired
     private Environment environment;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping("crash")
     public void crash() {
         ((ConfigurableApplicationContext )applicationContext).close();
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity findAll() {
         Map<String, Object> body = new HashMap<>();
         body.put("users", userService.findAll());
@@ -42,14 +47,14 @@ public class UserController {
         return ResponseEntity.ok(body);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         if (!user.isPresent()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(user.get());
     }
 
-    @PostMapping
+    @PostMapping("/")
 //    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity save(
             @Valid
@@ -63,6 +68,8 @@ public class UserController {
 
         if (userService.existsByEmail(user.getEmail())) return ResponseEntity.badRequest()
                 .body(Collections.singletonMap("error", "email already exists"));
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userService.save(user));
@@ -89,7 +96,7 @@ public class UserController {
             }
             userDB.setName(user.getName());
             userDB.setEmail(user.getEmail());
-            userDB.setPassword(user.getPassword());
+            userDB.setPassword(passwordEncoder.encode(user.getPassword()));
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(userService.save(userDB));
         }
@@ -98,7 +105,7 @@ public class UserController {
 
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteById(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
 
@@ -108,15 +115,26 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("users-courses")
+    @GetMapping("/users-courses")
     public ResponseEntity<List<User>> findUsersByCourse(@RequestParam List<Long> ids) {
         return ResponseEntity.ok(userService.findAllById(ids));
     }
 
-    @GetMapping("authorized")
+    @GetMapping("/authorized")
     public Map<String, Object> authorized(@RequestParam String code) {
         return Collections.singletonMap("code", code);
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<User> loginByEmail(@RequestParam String email) {
+        Optional<User> o = userService.findByEmail(email);
+        if (o.isPresent()) {
+            return ResponseEntity.ok(o.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
 
 
     private static ResponseEntity<Map<String, String>> validate(BindingResult result) {

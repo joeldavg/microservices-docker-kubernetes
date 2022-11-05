@@ -28,18 +28,15 @@ spring:
         registration:
           msvc-users-client:
             provider: spring
-            client-id: users-client
-            client-secret: 12345
+            client-id: "users-client"
+            client-secret: "12345"
             authorization-grant-type: authorization_code
             redirect-uri: ${LB_USERS_URI:http://127.0.0.1:8001}/authorized
-            scope:
-              - READ
-              - WRITE
+            scope: READ
             client-name: msvc-users-client
         provider:
           spring:
             issuer-uri: ${LB_AUTH_ISSUER_URI:http://127.0.0.1:9000}
-
 
 server:
   port: ${PORT:8001}
@@ -52,9 +49,9 @@ logging:
   file:
     path: /app/logs
 
-#msvc:
-#  courses:
-#    url: ${COURSES_URL:msvc-courses:8002/api/v1/courses}
+msvc:
+  courses:
+    url: ${COURSES_URL:msvc-courses:8002}
 
 
 management:
